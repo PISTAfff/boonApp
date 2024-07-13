@@ -38,6 +38,13 @@ const getAllUsers=async (req, res, next) => {
     users:users
   });
 };
+const deleteAllUsers=async (req, res, next) => {
+  await User.deleteMany({});
+  return res.json({
+    success: true,
+    messeage:"Deleted Successfully",
+  });
+};
 const editData = async (req, res, next) => {
   if(await emailExists(req.body.email)){
   let user=await User.findOne({email:req.body.email});
@@ -108,4 +115,5 @@ module.exports = {
   login,
   forgetPassword,
   getAllUsers,
+  deleteAllUsers,
 };
