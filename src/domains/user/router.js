@@ -3,7 +3,7 @@ const router = express.Router();
 const { signUp, login, forgetPassword, editData, getAllUsers, deleteAllUsers } = require('./controller');
 const { validate } = require('../../middlewares/validate.middleware');
 const asyncHandler = require('../../middlewares/asyncHandler.middleware');
-const { SignUpSchema, EditSchema, LoginSchema, ForgetPasswordSchema } = require('./Schema');
+const { SignUpSchema, EditSchema, LoginSchema, ForgetPasswordSchema } = require('./schema');
 
 router.post("/signUp", validate(SignUpSchema), asyncHandler(signUp));
 router.patch("/editData", validate(EditSchema), asyncHandler(editData));
