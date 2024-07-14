@@ -6,6 +6,9 @@ const EditSchema=Joi.object({
     securityQuestion:Joi.string().min(3).max(40).optional(),
     securityAnswer:Joi.string().min(3).max(40).optional(),
 });
+const onlyEmailSchema=Joi.object({
+    email:Joi.string().email().required(),
+});
 const SignUpSchema=Joi.object({
     email:Joi.string().email().required(),
     password:Joi.string().min(8).max(20).required(),
@@ -22,10 +25,15 @@ const LoginSchema=Joi.object({
 const ForgetPasswordSchema=Joi.object({
     email:Joi.string().email().required(),
 }); 
+const ConfrimAnswerSchema=Joi.object({
+    email:Joi.string().email().required(),
+    securityAnswer:Joi.string().min(3).max(40).required(),
+}); 
 module.exports={
 LoginSchema,
 EditSchema,
-LoginSchema,
 ForgetPasswordSchema,
 SignUpSchema,
+onlyEmailSchema,
+ConfrimAnswerSchema,
 };
